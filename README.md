@@ -64,4 +64,6 @@ iex(6)> Assignment.cached_round_robin([1, 1, 1, 2, 3, 4, 5], [:us, :europe, :asi
 
 ## Using your own cache implementation
 
-`Assignment.CacheBehaviour` defines the cache interface. You can use this to use your own caching backend (to add key expiration for example).
+`Assignment.CacheBehaviour` defines the cache interface.
+You can use this to use your own caching backend (to add key expiration for example).
+You can then pass the cache module and initial state via the `:cache` option with a value like `{MyCacheMod, state}`
