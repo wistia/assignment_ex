@@ -18,7 +18,7 @@ defmodule Assignment.Result do
     unassigned: list(Assignment.assignee),
     assignments: Assignment.assignments,
     destinations: list(Assignment.destination),
-    state: map :: any()
+    state: {:state, map :: any()}
   }
 
   defstruct [:unassigned, :assignments, :destinations, :state]
