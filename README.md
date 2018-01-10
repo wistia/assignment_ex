@@ -61,3 +61,7 @@ iex(6)> Assignment.cached_round_robin([1, 1, 1, 2, 3, 4, 5], [:us, :europe, :asi
   unassigned: []
 }
 ```
+
+## Using your own cache implementation
+
+`Assignment.CacheBehaviour` defines the cache interface. You can use this to use your own caching backend (to add key expiration for example).
