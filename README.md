@@ -72,20 +72,14 @@ iex(4)> result = Assignment.round_robin([1], [:us, :europe])
 %Assignment.Result{
   assignments: %{us: [1]},
   destinations: [:us, :europe],
-  state: {:state, %{
-            destination_queue: [:europe, :us],
-            destinations: [:us, :europe]
-          }},
+  state: ...,
   unassigned: []
 }
 iex(5)> result = Assignment.round_robin([2, 3], result.state)
 %Assignment.Result{
   assignments: %{europe: [2], us: [3]},
   destinations: [:us, :europe],
-  state: {:state, %{
-            destination_queue: [:europe, :us],
-            destinations: [:us, :europe]
-          }},
+  state: ...,
   unassigned: []
 }
 
@@ -95,34 +89,14 @@ iex(8)> result = Assignment.cached_round_robin([1, 2, 3], [:us, :europe])
 %Assignment.Result{
   assignments: %{europe: [2], us: [1, 3]},
   destinations: [:us, :europe],
-  state: {:state, %{
-            cache: {Assignment.Cache, %Assignment.Cache{
-                      data: %{1 => :us, 2 => :europe, 3 => :us},
-                      key_fun: &Assignment.Cache.identity/1
-                    }},
-            destinations: [:us, :europe],
-            round_robin: %{
-              destination_queue: [:europe, :us],
-              destinations: [:us, :europe]
-            }
-          }},
+  state: ...,
   unassigned: []
 }
 iex(9)> result = Assignment.cached_round_robin([1, 2, 3, 4], result.state)
 %Assignment.Result{
   assignments: %{europe: [2, 4], us: [1, 3]},
   destinations: [:us, :europe],
-  state: {:state, %{
-            cache: {Assignment.Cache, %Assignment.Cache{
-                      data: %{1 => :us, 2 => :europe, 3 => :us, 4 => :europe},
-                      key_fun: &Assignment.Cache.identity/1
-                    }},
-            destinations: [:us, :europe],
-            round_robin: %{
-              destination_queue: [:us, :europe],
-              destinations: [:us, :europe]
-            }
-          }},
+  state: ...,
   unassigned: []
 }
 ```
